@@ -20,7 +20,6 @@ public class Main {
          * because we are passing only one argument with
          * the "f" suffix. f is used to denote the float numbers
          */
-
         obj.calculateArea(6.1f);
 
         /*

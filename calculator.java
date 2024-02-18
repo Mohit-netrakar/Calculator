@@ -1,41 +1,42 @@
-/**
- * The calculator class provides methods for performing basic arithmetic operations such as addition,
- * subtraction, multiplication, and division.
- */
-public class calculator 
-{
-
-    public static float add(float num1, float num2) {
-        return num1 + num2;
+public class Calculator {
+    float num1;
+    float num2;
+    float n;
+    Calculator(float num1, float num2, float n) {
+        this.num1 = num1;
+        this.num2 = num2;
+        this.n = n;
     }
-
-    public static float subtract(float num1, float num2) {
-        return num1 - num2;
+    float add() {
+        return num1+num2;
     }
-
-    public static float multiply(float num1, float num2) {
-        return num1 * num2;
+    float subtract() {
+        return num1-num2;
     }
-
-    public static float divide(float num1, float num2) {
-        if (num2 != 0) {
-            return num1 / num2;
+    float multiply() {
+        return num1*num2;
+    }
+    float divide() {
+        if (num2!= 0) {
+            return num1/num2;
         } else {
-            System.out.println("Cannot divide by zero!");
-            return Float.NaN; 
+            System.out.println("Error: Division by zero is not allowed.");
+            return num1;
         }
     }
-
+    float square() {
+        return n*n;
+    }
+    float cube() {
+        return n*n*n;
+    }
     public static void main(String[] args) {
-
-        float operand1 = 10.5f;
-        float operand2 = 5.2f;
-
-        System.out.println("Addition: " + add(operand1, operand2));
-        System.out.println("Subtraction: " + subtract(operand1, operand2));
-        System.out.println("Multiplication: " + multiply(operand1, operand2));
-        
-        System.out.println("Division: " + divide(operand1, operand2));
-        System.out.println("Division by zero: " + divide(operand1, 0));
+        Calculator calculator = new Calculator(10, 5,6);
+        System.out.println("Addition: " + calculator.add());
+        System.out.println("Subtraction: " + calculator.subtract());
+        System.out.println("Multiplication: " + calculator.multiply());
+        System.out.println("Division: " + calculator.divide());
+        System.out.println("Square of number is:"+calculator.square());
+        System.out.println("Cube of number is:"+calculator.cube());
     }
 }
