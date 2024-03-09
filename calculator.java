@@ -1,42 +1,67 @@
+import java.util.Scanner;
+
 public class Calculator {
-    float num1;
-    float num2;
-    float n;
-    Calculator(float num1, float num2, float n) {
-        this.num1 = num1;
-        this.num2 = num2;
-        this.n = n;
+    
+    // Function to add two numbers
+    public static double add(double num1, double num2) {
+        return num1 + num2;
     }
-    float add() {
-        return num1+num2;
+    
+    // Function to subtract two numbers
+    public static double subtract(double num1, double num2) {
+        return num1 - num2;
     }
-    float subtract() {
-        return num1-num2;
+    
+    // Function to multiply two numbers
+    public static double multiply(double num1, double num2) {
+        return num1 * num2;
     }
-    float multiply() {
-        return num1*num2;
-    }
-    float divide() {
-        if (num2!= 0) {
-            return num1/num2;
-        } else {
-            System.out.println("Error: Division by zero is not allowed.");
-            return num1;
+    
+    // Function to divide two numbers
+    public static double divide(double num1, double num2) {
+        if (num2 == 0) {
+            throw new ArithmeticException("Division by zero is not allowed");
         }
+        return num1 / num2;
     }
-    float square() {
-        return n*n;
-    }
-    float cube() {
-        return n*n*n;
-    }
+    
     public static void main(String[] args) {
-        Calculator calculator = new Calculator(10, 5,6);
-        System.out.println("Addition: " + calculator.add());
-        System.out.println("Subtraction: " + calculator.subtract());
-        System.out.println("Multiplication: " + calculator.multiply());
-        System.out.println("Division: " + calculator.divide());
-        System.out.println("Square of number is:"+calculator.square());
-        System.out.println("Cube of number is:"+calculator.cube());
+        Scanner scanner = new Scanner(System.in);
+        double num1, num2;
+        char operator;
+        
+        System.out.println("Enter first number: ");
+        num1 = scanner.nextDouble();
+        System.out.println("Enter second number: ");
+        num2 = scanner.nextDouble();
+        System.out.println("Enter operator (+, -, *, /): ");
+        operator = scanner.next().charAt(0);
+        
+        double result = 0;
+        
+        switch(operator) {
+            case '+':
+                result = add(num1, num2);
+                break;
+            case '-':
+                result = subtract(num1, num2);
+                break;
+            case '*':
+                result = multiply(num1, num2);
+                break;
+            case '/':
+                try {
+                    result = divide(num1, num2);
+                } catch (ArithmeticException e) {
+                    System.out.println("Error: " + e.getMessage());
+                    return;
+                }
+                break;
+            default:
+                System.out.println("Invalid operator!");
+                return;
+        }
+        
+        System.out.println("Result: " + result);
     }
 }
